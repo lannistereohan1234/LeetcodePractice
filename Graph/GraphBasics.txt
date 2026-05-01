@@ -37,11 +37,12 @@ Edge (1,2) → adj[1]=[0,2], adj[2]=[1] → 2 more entries
 Edge (0,2) → adj[0]=[1,2], adj[2]=[1,0] → 2 more entries
 
 
-General formula: For an undirected graph with E edges → adjacency list has 2E total entries.
+General formula: 
+For an undirected graph with E edges → adjacency list has 2E total entries.
+For a directed graph with E edges → adjacency list has E total entries.
 
 
-
-Common LeetCode pattern
+Common LeetCode pattern for Undirected Graph
 
 public static List<List<Integer>> buildGraph(int n, int[][] edges) {
     List<List<Integer>> adj = new ArrayList<>();
@@ -55,7 +56,9 @@ public static List<List<Integer>> buildGraph(int n, int[][] edges) {
 
 
 
+For Directed Graph, 
 
+adj.get(e[0]).add(e[1]); // only this, no reverse
 
 
 
