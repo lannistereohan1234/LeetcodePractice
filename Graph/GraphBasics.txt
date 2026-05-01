@@ -1,0 +1,52 @@
+A 2D array matrix[i][j] = 1 if there's an edge from i to j.
+
+int[][] matrix = new int[n][n];
+matrix[0][1] = 1; // edge from 0 to 1
+
+Space: O(V²)
+Good for: Dense graphs, quick edge lookup
+Bad for: Sparse graphs (wastes memory)
+
+
+2. Adjacency List ✅ (Most commonly used in LeetCode)
+
+A list where adj[i] contains all neighbors of node i.
+
+List<List<Integer>> adj = new ArrayList<>();
+for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+adj.get(0).add(1); // edge from 0 to 1
+
+Space: O(V + E)
+Good for: Most problems (sparse graphs)
+
+Question:
+In an undirected graph, an edge between 1 and 2 means:
+
+1 is a neighbor of 2
+2 is a neighbor of 1
+So we need to add 2 entries:
+
+
+adj.get(1).add(2); // 2 is neighbor of 1
+adj.get(2).add(1); // 1 is neighbor of 2
+
+If I have an undirected graph with edges: (0,1), (1,2), (0,2), how many total entries will the adjacency list contain across all lists combined?
+
+Edge (0,1) → adj[0]=[1], adj[1]=[0] → 2 entries
+Edge (1,2) → adj[1]=[0,2], adj[2]=[1] → 2 more entries
+Edge (0,2) → adj[0]=[1,2], adj[2]=[1,0] → 2 more entries
+
+
+General formula: For an undirected graph with E edges → adjacency list has 2E total entries.
+
+
+
+
+
+
+
+
+
+
+
+
