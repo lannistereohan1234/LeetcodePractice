@@ -63,39 +63,33 @@ import java.util.Queue;
 
 public class BFS_on_disconnected {
 
-    static int n=6;
-    static Queue<Integer> queue=new LinkedList<>();
-
-    public static void bfs_usual(List<List<Integer>> adj, int start, boolean[] visited){
 
 
-
+    public static void bfs_usual(List<List<Integer>> adj, int start, boolean[] visited) {
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(start);
-        visited[start]=true;
+        visited[start] = true;
 
-        while(!queue.isEmpty()){
-            int node= queue.poll();
-            System.out.println(node+ "");
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            System.out.print(node + " ");
 
-            for(int neighbor: adj.get(node)){
-                if(!visited[neighbor]){
+            for (int neighbor : adj.get(node)) {
+                if (!visited[neighbor]) {
                     queue.offer(neighbor);
-                    visited[neighbor]=true;
+                    visited[neighbor] = true;
                 }
             }
-
-            System.out.println();
-
         }
     }
 
 
     public static void bfsDisconnected(List<List<Integer>> adj, int n) {
         boolean[] visited = new boolean[n];
-        System.out.print("BFS Traversal:");
+        System.out.print("BFS Traversal: ");
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                bfs_usual( adj,i, visited);
+                bfs_usual(adj, i, visited);
             }
         }
         System.out.println();
@@ -103,7 +97,7 @@ public class BFS_on_disconnected {
 
     public static void main(String[] args) {
         int[][] edges = {{0,1}, {0,2},{3,4}, {4,5}};
-
+        int n=6;
 
         List<List<Integer>> adj=new ArrayList<>();
 
