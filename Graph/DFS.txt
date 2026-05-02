@@ -1,0 +1,104 @@
+DFS is "go as deep as possible, then backtrack".
+
+The Intuition
+Imagine you're in a maze with a torch:
+
+BFS = You spread out and check all paths equally (need many friends)
+DFS = You pick one path and go DEEP until you hit a dead end, then backtrack and try another
+
+Visual Comparison:
+
+Graph:
+    0
+   / \
+  1   2
+  |   |
+  3   4
+
+BFS from 0
+0 → 1 → 2 → 3 → 4 (level by level)
+
+DFS from 0
+0 → 1 → 3 → 2 → 4 (go deep first)
+
+Two Ways to Write DFS ---
+
+Way 1: Recursive (most common, cleaner)
+
+public static void dfs(int node, List<List<Integer>> adj, boolean[] visited) {
+    visited[node] = true;
+    System.out.print(node + " ");
+    for (int neighbor : adj.get(node)) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, adj, visited);  // recursive call
+        }
+    }
+}
+
+Way 2: Iterative (using a Stack)
+
+public static void dfsIterative(int start, List<List<Integer>> adj, boolean[] visited) {
+    Deque<Integer> stack = new ArrayDeque<>();
+    stack.push(start);
+    while (!stack.isEmpty()) {
+        int node = stack.pop();
+        if (visited[node]) continue;
+        visited[node] = true;
+        System.out.print(node + " ");
+        for (int neighbor : adj.get(node)) {
+            if (!visited[neighbor]) {
+                stack.push(neighbor);
+            }
+        }
+    }
+}
+
+DFS iterative uses Stack (LIFO), BFS uses Queue (FIFO). That single data structure change is the only difference!
+
+
+Aspect ---------- BFS ---------- DFS
+Data Structure ---Queue (FIFO) ---------- Stack / Recursion (LIFO)
+Order ---------- Level by level ---------- Deep first
+Use case ---------- Shortest path in unweighted graph ---------- Cycle detection, connected components, topological sort, path existence
+Memory ---------- Can be wide (O(V)) ---------- Can be deep (O(V) call stack)
+Implementation ---------- Iterative ---------- Usually recursive
+
+
+
+Rule of thumb for choosing:
+Need shortest path / minimum steps? → BFS
+Need to explore all paths / detect cycles / topological order? → DFS
+
+
+
+    0
+   / \
+  1   2
+  |   |
+  3---4
+
+Adjacency list:
+
+0 -> [1, 2]
+1 -> [0, 3]
+2 -> [0, 4]
+3 -> [1, 4]
+4 -> [2, 3]
+
+
+Call ------ Visited ------- Action
+dfs(0) ------  {0} ------- Print 0, go to neighbor 1
+dfs(1) ------ {0,1} ------- Print 1, neighbor 0 visited, go to 3
+dfs(3) ------ {0,1,3} ------- Print 3, neighbor 1 visited, go to 4
+dfs(4) ------ {0,1,3,4} ------- Print 4, neighbors 2, 3 — go to 2
+dfs(2) ------ {0,1,3,4,2} ------- Print 2, all visited, return
+Back to 4 ------ All visited, return
+Back to 3 ------ All visited, return
+Back to 1 ------ All visited, return
+Back to 0 ------ Neighbor 2 already visited, return
+
+Output: 0 1 3 4 2
+
+
+
+
