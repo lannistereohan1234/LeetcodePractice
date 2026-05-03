@@ -24,3 +24,135 @@ Given an m x n 2D binary grid where:
 An island is a group of '1's connected horizontally or vertically (NOT diagonally). The grid is surrounded by water on all sides.
 
 Return the number of islands.
+
+Example 1:
+Input:
+[['1','1','1','1','0'],
+ ['1','1','0','1','0'],
+ ['1','1','0','0','0'],
+ ['0','0','0','0','0']]
+Output: 1
+(All 1s are connected → 1 island)
+
+Example 2:
+Input:
+[['1','1','0','0','0'],
+ ['1','1','0','0','0'],
+ ['0','0','1','0','0'],
+ ['0','0','0','1','1']]
+Output: 3
+(Top-left blob, middle single, bottom-right pair → 3 islands)
+
+
+
+The Pattern (You Already Know This!)
+It's EXACTLY the connected components pattern, but on a grid:
+
+count = 0
+for each cell (i, j):
+    if grid[i][j] == '1' and not visited:
+        dfs(i, j)   // sink the entire island
+        count++
+return count
+The dfs here marks all connected '1's as visited (or you can change them to '0' to "sink" the island).
+
+
+The 4-Direction Trick (MEMORIZE THIS!)
+Instead of writing 4 separate dfs calls, use a directions array:
+
+int[][] directions = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+// up, down, left, right
+for (int[] dir : directions) {
+    int newRow = i + dir[0];
+    int newCol = j + dir[1];
+    // check bounds + check if '1' + recurse
+}
+This is THE pattern for ALL grid traversal problems — islands, paths, flood fill, rotting oranges, etc.
+
+
+
+The Grid DFS Template
+public static void dfs(char[][] grid, int i, int j) {
+    int m = grid.length;
+    int n = grid[0].length;
+    // Boundary + water/visited check
+    if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] != '1') {
+        return;
+    }
+    grid[i][j] = '0';  // ← "sink" the land (mark visited)
+    // Explore 4 directions
+    dfs(grid, i + 1, j);
+    dfs(grid, i - 1, j);
+    dfs(grid, i, j + 1);
+    dfs(grid, i, j - 1);
+}
+💡 Key insight: Modifying grid[i][j] = '0' acts as your "visited" array — saves O(m·n) extra space! (If you can't modify input, use a separate visited[][] array.)
+
+
+
+
+
+
+
+/* *****VVIP*****
+
+You don’t need to convert int[][] to an adjacency list for Number of Islands because the grid is already an implicit graph:
+Each land cell (1) is a node.
+Its neighbors are just the 4 directions (up/down/left/right), computed on the fly.
+BFS/DFS can directly use (row, col) + boundary checks.
+So in NumberOfIslands.java, this is enough:
+loop all cells
+when you find unvisited land, start BFS/DFS
+mark connected land as visited
+Why adjacency list is unnecessary here:
+Extra preprocessing time to build edges.
+Extra memory to store neighbors for every cell.
+More code complexity for no benefit in a dense, structured grid.
+When adjacency list does make sense:
+Graph input is already edge-based (u, v pairs).
+Neighbors are irregular/dynamic (not fixed 4-direction pattern).
+Sparse graph where explicit edge storage is natural.
+So for grid problems like islands/flood-fill/rotting-oranges, direct grid traversal is the standard and most efficient approach.
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
