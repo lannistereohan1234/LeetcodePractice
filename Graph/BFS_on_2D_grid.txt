@@ -1,0 +1,26 @@
+BFS on a 2D Grid — Number of Islands (LeetCode #200)
+This is one of the most asked graph questions in interviews (Amazon, Google, Microsoft love it). It introduces a critical new pattern: the grid IS a graph.
+
+The Big Idea: Grid = Graph
+A 2D grid is just a graph in disguise!
+
+Each cell (i, j) is a node
+Each cell has up to 4 neighbors: up, down, left, right (sometimes 8 if diagonals count)
+No need to build an adjacency list — neighbors are computed on the fly!
+Grid:        Think of it as:
+1 1 0        (0,0)—(0,1)
+1 0 0          |
+0 0 1        (1,0)
+                       
+                  (2,2)
+
+
+
+Problem: Number of Islands
+Given an m x n 2D binary grid where:
+
+'1' = land
+'0' = water
+An island is a group of '1's connected horizontally or vertically (NOT diagonally). The grid is surrounded by water on all sides.
+
+Return the number of islands.
