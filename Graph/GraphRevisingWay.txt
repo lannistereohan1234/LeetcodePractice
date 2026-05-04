@@ -1,0 +1,38 @@
+✅ Graph representation (matrix + adjacency list)
+✅ BFS (single-source, multi-source, on grids)
+✅ DFS (recursive, iterative, on grids)
+✅ Connected components (Number of Provinces)
+✅ Grid DFS (Number of Islands)
+✅ Multi-source BFS for shortest time (Rotting Oranges)
+✅ Disconnected graph handling
+✅ Level-by-level BFS pattern
+✅ The int[] coordinate trick for grid BFS
+
+
+Option A: 🔄 Cycle Detection (Medium, very common)
+Detect cycles in directed and undirected graphs.
+
+LeetCode: Course Schedule I & II
+Pattern: DFS with 3-color marking
+Used in: Task scheduling, dependency resolution
+Option B: 📊 Topological Sort (Medium, very common)
+Order tasks so dependencies come first.
+
+LeetCode: Course Schedule II, Alien Dictionary
+Two ways: Kahn's algorithm (BFS) + DFS
+Used in: Build systems, course planning
+Option C: ⚖️ Bipartite Graph Check (Medium)
+Can you 2-color a graph?
+
+LeetCode: Is Graph Bipartite, Possible Bipartition
+Pattern: BFS/DFS with coloring
+Option D: 🌐 Union-Find (DSU) — A New Data Structure! (Medium-Hard)
+Powerful for connectivity problems.
+
+LeetCode: Number of Connected Components, Redundant Connection
+Pattern: Path compression + union by rank
+Used in: Kruskal's MST, network connectivity
+Option E: 🛣️ Shortest Path Algorithms (Hard)
+Dijkstra (weighted graphs)
+Bellman-Ford (negative weights)
+Floyd-Warshall (all-pairs)
