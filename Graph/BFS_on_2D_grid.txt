@@ -1,4 +1,4 @@
-BFS on a 2D Grid — Number of Islands (LeetCode #200)
+DFS on a 2D Grid — Number of Islands (LeetCode #200)
 This is one of the most asked graph questions in interviews (Amazon, Google, Microsoft love it). It introduces a critical new pattern: the grid IS a graph.
 
 The Big Idea: Grid = Graph
