@@ -1,0 +1,12 @@
+Sort the input by some clever key, then iterate once and greedily pick (or skip) elements based on a simple rule.
+
+1. Sort input by some key (ascending or descending)
+2. Initialize a counter / result variable
+3. Loop through sorted elements:
+      if current element satisfies a condition:
+          take it (update result, advance pointer)
+      else:
+          skip it
+4. Return result
+
+
