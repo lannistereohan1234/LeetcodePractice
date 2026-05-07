@@ -1,0 +1,35 @@
+A greedy algorithm builds a solution piece by piece, always picking the option that looks best at the current moment, without reconsidering past choices or looking ahead.
+
+Three key properties that define greedy:
+
+Local choice — at each step, you make the choice that seems best right now.
+No backtracking — once you pick, you don't undo it.
+Hope for global optimum — you trust that local optima → global optimum.
+⚠️ The catch: greedy doesn't always work. It only works when the problem has the greedy choice property
+(a locally optimal choice leads to a globally optimal one) and optimal substructure.
+
+
+create 43 with coins of 1,5,10,20
+Greedy approach: Always pick the largest coin that doesn't exceed the remaining amount [pattern]
+
+Take 20 → remaining 23
+Take 20 → remaining 3
+Take 1 → remaining 2
+Take 1 → remaining 1
+Take 1 → remaining 0
+
+But here's the twist — for coins {1, 3, 4} and amount 6:
+
+Greedy: 4 + 1 + 1 = 3 coins
+Optimal: 3 + 3 = 2 coins ❌ [why didnt you pick the maxa which is the pattern for greedy, coz it wont work here]
+Lesson: Greedy depends on the structure of the problem. You must verify it's applicable.
+
+Here are the 5 core patterns most greedy problems fall into:
+
+#	Pattern	Core Idea	Classic Problem
+1 --------- Sorting + Picking --------- Sort by some key, then pick greedily --------- Assign Cookies (455)
+2 --------- Interval Scheduling --------- Sort by end/start time, pick non-overlapping --------- Non-overlapping Intervals (435)
+3 --------- Jump / Reach Problems --------- Track furthest reachable point --------- Jump Game (55)
+4 --------- Two-Pointer Greedy --------- Move pointers based on local optimal choice --------- Container With Most Water (11)
+5 --------- Heap-Based Greedy --------- Always pick min/max from a priority queue --------- Task Scheduler (621)
+
