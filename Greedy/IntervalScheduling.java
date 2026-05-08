@@ -29,3 +29,53 @@ Earliest end time first (sort by end ascending)
 
 */
 
+
+// Similar leetcode problems:
+
+// 435 -- Non-overlapping Intervals -- End time
+//452 -- Min Arrows to Burst Balloons -- End coordinate
+//646 -- Maximum Length of Pair Chain -- Second element
+//1326 -- Min Taps to Water Garden -- (variant)
+
+
+import java.util.Arrays;
+
+public class NonOverlappingIntervals {
+    public int eraseOverlapIntervals(int[][] intervals) {
+        if (intervals.length == 0) return 0;
+
+        int n = intervals.length;
+        // Sort by end time to maximize the number of non-overlapping intervals
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1]));
+
+        int prev = 0;
+        int count = 1; // count of non-overlapping intervals kept
+
+        for (int i = 1; i < n; i++) {
+            // If current start is >= previous end, there is no overlap
+            if (intervals[i][0] >= intervals[prev][1]) {
+                prev = i;
+                count++;
+            }
+        }
+
+        // Total intervals minus the ones we kept = intervals to remove
+        return n - count;
+    }
+
+    public static void main(String[] args) {
+        NonOverlappingIntervals sol = new NonOverlappingIntervals();
+
+        // Test Case 1: Standard overlap
+        int[][] test1 = {{1, 2}, {2, 3}, {3, 4}, {1, 3}};
+        System.out.println("Test 1 Result: " + sol.eraseOverlapIntervals(test1)); // Expected: 1
+
+        // Test Case 2: All overlapping
+        int[][] test2 = {{1, 2}, {1, 2}, {1, 2}};
+        System.out.println("Test 2 Result: " + sol.eraseOverlapIntervals(test2)); // Expected: 2
+
+        // Test Case 3: No overlaps
+        int[][] test3 = {{1, 2}, {2, 3}};
+        System.out.println("Test 3 Result: " + sol.eraseOverlapIntervals(test3)); // Expected: 0
+    }
+}
