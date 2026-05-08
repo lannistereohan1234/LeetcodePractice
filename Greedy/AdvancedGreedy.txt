@@ -1,0 +1,9 @@
+Pattern ----- Why It's Harder ------- Flagship Problem
+
+Multi-Criteria Sort ----- Choosing two sort keys (primary + tie-breaker) — wrong tiebreaker = wrong answer ----- LC 406: Queue Reconstruction by Height
+
+Greedy + Hash Map ----- Greedy decisions driven by precomputed lookups ----- LC 763: Partition Labels
+
+Greedy + Monotonic Stack ----- Maintain a "running best" answer that you may need to retract ----- LC 402: Remove K Digits
+
+Exchange-Argument-Heavy Proofs ----- The greedy choice is non-obvious; correctness needs a real proof ----- LC 134: Gas Station
