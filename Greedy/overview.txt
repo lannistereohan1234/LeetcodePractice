@@ -31,5 +31,5 @@ Here are the 5 core patterns most greedy problems fall into:
 2 --------- Interval Scheduling --------- Sort by end/start time, pick non-overlapping --------- Non-overlapping Intervals (435)
 3 --------- Jump / Reach Problems --------- Track furthest reachable point --------- Jump Game (55)
 4 --------- Two-Pointer Greedy --------- Move pointers based on local optimal choice --------- Container With Most Water (11)
-5 --------- Heap-Based Greedy --------- Always pick min/max from a priority queue --------- Task Scheduler (621)
+5 --------- Heap-Based Greedy --------- Always pick min/max from a priority queue --------- Task Scheduler (621), Last Stone Weight
 
