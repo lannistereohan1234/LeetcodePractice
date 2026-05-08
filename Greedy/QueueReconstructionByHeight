@@ -1,0 +1,38 @@
+class Solution {
+    public int[][] reconstructQueue(int[][] people) {
+        // very very tricky
+
+        // primary task is to make the queue logical where first is height, second is how many people should
+        // stand in front of first height person, so that can justify the second value
+        // a person of the smallest height can see persons in front of them with greater height
+
+
+        
+        // Sort rule:
+
+        // Primary: height descending (tallest first)
+        // Tiebreaker: k ascending (smaller k first among same heights)
+
+
+        
+        // 1. Sort: Height descending, then k-value ascending
+        Arrays.sort(people, (a, b) -> {
+            if (a[0] == b[0]) {
+                return a[1] - b[1]; // Tiebreaker: k ascending
+            }
+            return b[0] - a[0];     // Height descending
+        });
+
+        // 2. Insert: Use a list to handle index-based positioning
+        // LinkedList is often preferred for many middle insertions
+        List<int[]> resultList = new LinkedList<>();
+        for (int[] person : people) {
+            resultList.add(person[1], person);
+        }
+
+        // 3. Convert back to a 2D array
+        return resultList.toArray(new int[people.length][2]);
+    
+
+    }
+}
