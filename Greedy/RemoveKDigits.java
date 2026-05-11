@@ -1,3 +1,6 @@
+
+// Trigger: "Smallest/largest result by removing characters / keeping subset." Insight: Maintain a monotonic stack; pop the top when a "better" element arrives and you still have budget.
+
 import java.util.*;
 
 class Solution {
@@ -39,3 +42,32 @@ class Solution {
         return sb.length() == 0 ? "0" : sb.toString();
     }
 }
+
+
+
+
+/*
+LC 316 — Remove Duplicate Letters (similar — keep at least one of each)
+
+public String removeDuplicateLetters(String s) {
+    int[] last = new int[26];
+    boolean[] inStack = new boolean[26];
+    for (int i = 0; i < s.length(); i++) last[s.charAt(i) - 'a'] = i;
+    Deque<Character> stack = new ArrayDeque<>();
+    for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+        if (inStack[c - 'a']) continue;
+        while (!stack.isEmpty() && stack.peek() > c && last[stack.peek() - 'a'] > i) {
+            inStack[stack.pop() - 'a'] = false;
+        }
+        stack.push(c);
+        inStack[c - 'a'] = true;
+    }
+    StringBuilder sb = new StringBuilder();
+    stack.descendingIterator().forEachRemaining(sb::append);
+    return sb.toString();
+}
+
+*/
+
+
