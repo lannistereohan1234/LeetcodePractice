@@ -1,3 +1,9 @@
+//Pattern A4 — Exchange Argument (Skip Provably-Bad Candidates)
+//Trigger: "Find a starting point such that some traversal succeeds." Insight: If candidate fails at index i, skip everything between candidate and i — they're provably worse.
+
+
+
+
 class Solution {
 
     // "If you fail at station i, everything before i is a dead end; if the total gas is enough, the next station is the start."
@@ -24,3 +30,21 @@ class Solution {
         return (total >= 0) ? start : -1;
     }
 }
+
+
+/*
+LC 871 — Minimum Refueling Stops (exchange + heap)
+
+public int minRefuelStops(int target, int startFuel, int[][] stations) {
+    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+    int stops = 0, fuel = startFuel, i = 0;
+    while (fuel < target) {
+        while (i < stations.length && stations[i][0] <= fuel) pq.offer(stations[i++][1]);
+        if (pq.isEmpty()) return -1;
+        fuel += pq.poll();
+        stops++;
+    }
+    return stops;
+}
+
+*/
