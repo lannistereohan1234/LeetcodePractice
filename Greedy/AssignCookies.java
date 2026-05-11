@@ -7,6 +7,9 @@ import java.util.Arrays;
 // https://leetcode.com/problems/bag-of-tokens/description/
 // https://leetcode.com/problems/candy/description/
 
+
+//Trigger: "Match items from two lists / fit X to Y." Insight: Sort both, walk with two pointers.
+
 public class AssignCookies {
     public int findContentChildren(int[] g, int[] s) {
         // Step 1: Sort both arrays to use the greedy approach
