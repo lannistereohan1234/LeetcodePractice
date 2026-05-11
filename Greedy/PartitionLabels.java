@@ -23,6 +23,10 @@ When you hit your current end, you've safely closed a partition.
 */
 
 
+
+// Trigger: "Decisions depend on something that happens later in the input." Insight: Precompute last-occurrence (or next-occurrence) in O(n), then scan greedily.
+
+
 class Solution {
     public List<Integer> partitionLabels(String s) {
         // create map
@@ -50,3 +54,22 @@ class Solution {
        
     }
 }
+
+
+
+
+/*
+LC 2405 — Optimal Partition of String (similar — partition by distinct chars)
+
+public int partitionString(String s) {
+    boolean[] seen = new boolean[26];
+    int parts = 1;
+    for (char c : s.toCharArray()) {
+        if (seen[c - 'a']) { parts++; Arrays.fill(seen, false); }
+        seen[c - 'a'] = true;
+    }
+    return parts;
+}
+
+*/
+
