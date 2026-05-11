@@ -1,4 +1,6 @@
 class Solution {
+
+    // "If you fail at station i, everything before i is a dead end; if the total gas is enough, the next station is the start."
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int current = 0; // Fuel left to reach the next station
         int total = 0;   // Overall fuel balance for the entire trip
