@@ -50,6 +50,10 @@ Way 2 is unnecessarily fancy.
 
 */
 
+
+// Trigger: "Repeatedly pick best item, then put something back." Insight: Use a PriorityQueue when the "best" changes dynamically.
+
+
 class Solution {
     public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> heap=new PriorityQueue<>((a,b)->b-a);
@@ -82,7 +86,34 @@ class Solution {
 }
 
 
+/*
+LC 1167 — Min Cost to Connect Sticks (min-heap variant)
 
+public int connectSticks(int[] sticks) {
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
+    for (int s : sticks) pq.offer(s);
+    int cost = 0;
+    while (pq.size() > 1) {
+        int merged = pq.poll() + pq.poll();
+        cost += merged;
+        pq.offer(merged);
+    }
+    return cost;
+}
+
+
+LC 621 — Task Scheduler (heap + cooldown)
+
+public int leastInterval(char[] tasks, int n) {
+    int[] freq = new int[26];
+    for (char c : tasks) freq[c - 'A']++;
+    Arrays.sort(freq);
+    int maxFreq = freq[25], idle = (maxFreq - 1) * n;
+    for (int i = 24; i >= 0 && idle > 0; i--) idle -= Math.min(maxFreq - 1, freq[i]);
+    return tasks.length + Math.max(0, idle);
+}
+
+*/
 
 
 
