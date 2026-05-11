@@ -44,3 +44,22 @@ public class AssignCookies {
         System.out.println("Result 2: " + sol.findContentChildren(g2, s2)); // Output: 2
     }
 }
+
+
+
+// LC 1710 — Maximum Units on a Truck (similar)
+/*
+public int maximumUnits(int[][] boxTypes, int truckSize) {
+    Arrays.sort(boxTypes, (a, b) -> b[1] - a[1]);
+    int units = 0;
+    for (int[] b : boxTypes) {
+        int take = Math.min(truckSize, b[0]);
+        units += take * b[1];
+        truckSize -= take;
+        if (truckSize == 0) break;
+    }
+    return units;
+}
+*/
+
+
