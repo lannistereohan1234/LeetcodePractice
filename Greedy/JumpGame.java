@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+// Trigger: "Can you reach / minimum jumps / furthest position." Insight: Track maxReach; fail if i > maxReach
+
 public class Solution {
     public boolean canJump(int[] nums) {
         int maxReach = 0;
@@ -28,3 +30,20 @@ public class Solution {
         System.out.println("Test Case 2 " + Arrays.toString(nums2) + ": " + sol.canJump(nums2));
     }
 }
+
+
+/*
+
+LC 45 — Jump Game II (similar — count jumps)
+
+public int jump(int[] nums) {
+    int jumps = 0, currentEnd = 0, farthest = 0;
+    for (int i = 0; i < nums.length - 1; i++) {
+        farthest = Math.max(farthest, i + nums[i]);
+        if (i == currentEnd) { jumps++; currentEnd = farthest; }
+    }
+    return jumps;
+}
+
+
+*/
