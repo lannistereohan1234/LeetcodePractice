@@ -10,7 +10,7 @@ public class NumberOfConnectedComponents {
             adj.add(new ArrayList<>());
         }
 
-        // no matter how many edges or nodes, these two lines will create adj list of all
+        // no matter how many edges or nodes, these two lines will create adj list of all in undirected graph
         for (int[] edge : edges) {
             adj.get(edge[0]).add(edge[1]);
             adj.get(edge[1]).add(edge[0]);
