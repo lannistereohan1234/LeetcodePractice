@@ -12,11 +12,11 @@ public class NumberOfIslands {
 
 
     private static void dfs(int[][] grid, int row, int col) {
-        if(row<0 || row>=grid.length || col<0 || col>=grid[0].length || grid[row][col]!=1){
+        if(row<0 || row>=grid.length || col<0 || col>=grid[0].length || grid[row][col]!=1){        // means if water or blocker found, return
             return;
         }
 
-        grid[row][col]=0;     // mark as visited
+        grid[row][col]=0;     // mark as visited by converting land into water
 
         dfs(grid,row+1,col);
         dfs(grid,row-1,col);
